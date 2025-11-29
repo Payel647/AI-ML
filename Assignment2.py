@@ -14,14 +14,20 @@ for i in range(a,b+1):
         print(i)
 #3
 def print_digit(n):
-    while(n>0):
+        if(n==0):
+            return 
         last=n%10
         n=n//10
+        print_digit(n)
         print(last)
 n=int(input("Enter number: "))
 print_digit(n)
 #4
 def count_digit(n):
+    if n==0:
+        return 1;
+    if n<0:
+        n=-n
     count=0
     while(n>0):
         last=n%10
@@ -32,6 +38,8 @@ n=int(input("Enter number: "))
 print(count_digit(n))
 #5
 def sum_digit(n):
+    if n<0:
+        n=-n
     sum=0
     while(n>0):
         last=n%10
@@ -59,34 +67,43 @@ while(True):
          print("Zero")
 #8
 def calculator(a,b,o):
-    if o=='+':
+    if o == '+':
         return a+b
-    elif o=='-':
+    elif o == '-':
         return a-b
-    elif o=='*':
+    elif o == '*':
         return a*b
-    elif o=='/':
-        return a/b
+    elif o == '/':
+        if b == 0:
+            print("Division can not be done by 0")
+            return -1
+        else:
+            return a/b
     else:
         print("Invalid Operator!!")
-a=int(input("Enter operand: "))
-b=int(input("Enter 2nd Operand: "))
-op=input("Enter Operator: ")
-print("Result: ",calculator(a,b,op))
+        return "Invalid"
+
+a = int(input("Enter operand: "))
+b = int(input("Enter 2nd Operand: "))
+op = input("Enter Operator: ")
+
+res = calculator(a, b, op) if calculator(a, b, op)!=-1 else "Invalid"
+
+print("Result: ",res)
 #9
-a=int(input("Enter a Number: "))  
-if a<=2 and a>0:
-    print("Prime")
-elif a<=0:
-    print("Can't Say!!")
-isTrue=True
-for i in range(2,a):
-    if a%i==0:
-        print("Not a Prime")
-        isTrue=False
-        break
-if(isTrue==True):
-    print("Prime")
+a = int(input("Enter a Number: "))
+
+if a <= 1:
+    print("Not a Prime")
+else:
+    isPrime = True
+    for i in range(2, a):
+        if a % i == 0:
+            print("Not a Prime")
+            isPrime = False
+            break
+    if isPrime:
+        print("Prime")
 #10
 res=46
 while(True):
@@ -97,3 +114,4 @@ while(True):
         print("To Less!!")
     else:
         print("Correct!!")
+        break
