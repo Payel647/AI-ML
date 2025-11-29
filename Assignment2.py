@@ -25,7 +25,7 @@ print_digit(n)
 #4
 def count_digit(n):
     if n==0:
-        return 1;
+        return 1
     if n<0:
         n=-n
     count=0
@@ -115,3 +115,4 @@ while(True):
     else:
         print("Correct!!")
         break
+
